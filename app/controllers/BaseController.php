@@ -22,6 +22,9 @@ class BaseController extends Controller
 
     protected $stdName = null;
 
+    public $title = '';
+    public $desc = false;
+
     /**
      * Setup the layout used by the controller.
      *
@@ -32,7 +35,10 @@ class BaseController extends Controller
         if ( ! is_null($this->layout))
         {
             $this->layout = View::make($this->layout);
+            $this->layout->with('controller',$this);
         }
+
+
     }
 
 

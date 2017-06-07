@@ -21,15 +21,20 @@ class CodeController extends BaseController
 
     protected function beforeList(&$data)
     {
+        $this->title = '微码列表';
         $data['hotCodes'] = Code::whereNotNull('id')->orderBy("view_ct","desc")->limit(10)->get();
     }
 
     protected function beforeView(&$data)
     {
         $code = $data['model'];
+
         $code->view_ct += 1;
         $code->save();
         $data['prevCode'] = Code::orderBy('created_at','desc')->where('created_at','<',$code->created_at)->first();
         $data['nextCode'] = Code::orderBy('created_at')->where('created_at','>',$code->created_at)->first();
+
+        $this->title = $code->title.'-微码';
+        $this->desc = $code->short;
     }
 }

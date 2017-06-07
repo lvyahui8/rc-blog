@@ -1,0 +1,156 @@
+@charset "utf-8";
+
+/* =======================================
+
+ Browser Reset CSS
+ 
+ ========================================== */
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+article, aside, dialog, figure, footer, header, hgroup, nav, section {
+	display:block;
+}
+
+* html body {
+    font-size: small;
+}
+*:first-child+ html body {
+    font-size: small;
+}
+img {
+    border: 0;
+    vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+ul, dl, ol {
+    text-indent: 0;
+}
+
+nav ul {
+	list-style:none;
+}
+
+li {
+    list-style: none;
+}
+
+blockquote, q {
+	quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content:'';
+	content:none;
+}
+
+a {
+	margin:0;
+	padding:0;
+	border:0;
+	font-size:100%;
+	vertical-align:baseline;
+	background:transparent;
+}
+
+address, caption, cite, code, dfn, em, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+abbr {
+    border: none;
+}
+
+sup {
+    vertical-align: text-top;
+}
+
+sub {
+    vertical-align: text-bottom;
+}
+
+input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+* html input, * html textarea, * html select {
+    font-size: 100%;
+}
+
+*:first-child+ html+ input, *:first-child html+ textarea, *:first-child+ html select {
+    font-size: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: inherit;
+}
+
+th, td {
+    text-align: left;
+    vertical-align: top;
+}
+
+caption {
+    text-align: left;
+}
+
+pre, code, kbd, samp, tt {
+    font-family: monospace;
+}
+
+* html pre, * html code, * html kbd, * html samp, * html tt {
+    font-size: 100%;
+    line-height: 100%;
+}
+
+*:first-child+ html pre, *:first-child html+ code, *:first-child html+ kbd, *:first-child+ html+ samp, *:first-child+ html tt {
+    font-size: 108%;
+    line-height: 100%;
+}
+
+input, select, textarea {
+    font-size: 100%;
+    font-family: "lucida grande",tahoma,verdana,arial,sans-serif, "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", "Lucida Sans Unicode", Arial, Verdana, sans-serif;
+}
+
+.clear {
+    clear: both;
+}
+
+/*-- clearfix --*/
+.clearfix:after {
+    //content: ".";
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0px;
+    line-height: 0;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+.clearfix {
+    display: block;
+}
+/* */

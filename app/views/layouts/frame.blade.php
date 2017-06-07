@@ -18,9 +18,11 @@ $navMap = array(
         ),
         'project' => array(
                 'text' => '项目',
+                'url' => URL::to('project/list'),
         ),
         'code' => array(
-                'text' => '微码'
+                'text' => '微码',
+                'url' => URL::to('code/list'),
         ),
         'about' => array(
                 'text' => '关于'
@@ -33,6 +35,7 @@ $navMap = array(
 <html lang="zh-CN">
 <head>
     <meta property="qc:admins" content="161721657453566375" />
+    <meta name="baidu-site-verification" content="Yv33PNZgyW" />
     <title>若尘博客</title>
     {{HTML::style(asset('css/reset.css'))}}
     {{HTML::style(asset('css/styles.css?v=100'))}}

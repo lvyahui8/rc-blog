@@ -17,17 +17,17 @@ class CommentController extends BaseController
 
 
     public function postEdit(){
-        if(Input::get('content') !== ''){
+        if(Input::get('content') !== '' && !Auth::guest()){
             $comment = new Comment();
             $comment->proj_type = Input::get('proj_type');
             if(Input::has('proj_id')){
                 $comment->proj_id = Input::get('proj_id');
             }
-            if(!Auth::guest()){
-                $user = Auth::user();
-                $comment->user_id = $user->id;
-                $comment->username = $user->username;
-            }
+
+            $user = Auth::user();
+            $comment->user_id = $user->id;
+            $comment->username = $user->username;
+
             $comment->content = Input::get('content');
             $comment->save();
             return Response::json(array(

@@ -6,9 +6,9 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="row">
-                            <div class="col-sm-8">
+                            <div class="col-sm-12">
                                 <a href="{{URL::to('blog/view/'.$post->id)}}"><h4 class="item-title">{{$post->title}}</h4></a>
-                                <p>{{$post->short}}</p>
+                                <p>{{$post->short }}</p>
                             </div>
                         </div>
                         <div class="row">

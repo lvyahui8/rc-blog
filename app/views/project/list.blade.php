@@ -49,7 +49,7 @@ if(!Cache::has($key)){
                     'pic'   =>  asset('images/taocloud_thum.jpg'),
                     'bigPic'   =>  asset('images/taocloud.jpg'),
                     'name'   =>  '大道云行',
-                    'desc'   =>  '负责web系统开发，以及rpc远程调用开发',
+                    'desc'   =>  '负责web系统开发，以及rpc远程调用开发、agent开发',
                     'role'  =>  'web开发人员'
             ),
 

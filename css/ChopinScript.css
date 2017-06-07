@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'ChopinScript';
+    src: url('fonts/ChopinScript.eot');
+    src: url('fonts/ChopinScript.eot') format('embedded-opentype'),
+         url('fonts/ChopinScript.woff2') format('woff2'),
+         url('fonts/ChopinScript.woff') format('woff'),
+         url('fonts/ChopinScript.ttf') format('truetype'),
+         url('fonts/ChopinScript.svg#ChopinScript') format('svg');
+}

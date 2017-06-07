@@ -13,6 +13,7 @@ class AboutController extends BaseController
     }
 
     public function getIndex(){
+        $this->title = '关于博客作者';
         $this->makeView();
     }
 

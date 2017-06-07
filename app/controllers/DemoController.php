@@ -15,9 +15,11 @@ use Illuminate\Support\Facades\View;
 class DemoController extends BaseController
 {
     public function getIndex(){
+        $this->title = '示例程序';
         $this->makeView();
     }
     public function getHacker($slug = false){
+        $this->title = '黑客帝国刷屏js-示例程序';
         $this->registStyle('js/syntaxhighlighter/styles/shCoreRDark.css');
         $this->registScript('js/syntaxhighlighter/scripts/shCore.js');
         $this->registScript('js/syntaxhighlighter/scripts/shAutoloader.js');
@@ -25,6 +27,7 @@ class DemoController extends BaseController
     }
 
     public function getDataTable(){
+        $this->title = '行内编辑js插件（Excel）-示例程序';
         $this->makeView();
     }
 

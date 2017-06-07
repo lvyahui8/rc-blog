@@ -8,5 +8,10 @@
  */
 class ProjectController extends BaseController
 {
+    public function getList()
+    {
+        $this->title = '曾经做过的项目';
+        return parent::getList();
+    }
 
 }

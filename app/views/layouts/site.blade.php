@@ -1,4 +1,5 @@
 <?php
+// 前台使用的布局文件
 $stdName = $ctrl->getStdName();
 $routeMethod = $ctrl->routeMethod();
 $subIndex = $routeMethod === 'getIndex';
@@ -50,6 +51,10 @@ $navMap = array(
             window.parent.location.hash = '#' + url;
         }
         return false;
+    });
+    $(window).load(function(){
+//        console.log('load');
+        window.parent.document.title = window.document.title;
     });
     //    document.getElementsByTagName('a').onclick = function(){
     //        window.parent.location.hash = '#' + this.href;
