@@ -1,0 +1,229 @@
+@import "vars.less";
+.ttw-music-player {
+  width: 175px;
+  margin: 2px auto;
+  .play{
+    width: 100%;
+  }
+}
+
+/** Album Cover **/
+.ttw-music-player {
+  .album-cover {
+    position: relative;
+    float: left;
+    background: #333 url(../images/album-cover-bg.jpg) no-repeat 0 0 scroll;;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, .75);
+    -moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, .75);
+    -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, .75);
+    .img {
+      box-shadow: inset 0 0 1px rgba(255, 255, 255, .6);
+      -moz-box-shadow: inset 0 0 1px rgba(255, 255, 255, .6);
+      -webkit-box-shadow: inset 0 0 1px rgba(255, 255, 255, .6);
+      background: transparent no-repeat center center;
+    }
+    .highlight {
+      background: transparent url(../images/album-cover-highlight.png) no-repeat 0 0 scroll;
+      opacity: 1;
+
+    }
+    img,.img,.highlight{
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height:48px;
+      width:48px;
+    }
+  }
+  .album-cover:hover .highlight {
+    opacity: 1;
+  }
+}
+
+/** Track Info **/
+.ttw-music-player .track-info {
+  width: 100px;
+  margin-left:60px;
+  font-size: 12px;
+  p{
+    margin: 0 0 8px 0;
+  }
+  .title{
+    color: #666;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .8);
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .artist-outer{
+    color: #727272;
+    font-style: italic;
+  }
+  .artist {
+    color: #999;
+    margin-left: 4px;
+  }
+  .rating {
+    display: none;
+  }
+}
+
+/** Player **/
+.ttw-music-player {
+  .player-controls {
+    width: 175px;
+    height: 19px;
+    //background: transparent url(../images/player-bg.png) repeat 0 0 scroll;
+    background-color: #999;
+    float: left;
+    margin-top: 12px;
+    padding: 2px 0;
+    .main{
+      width: 52px;
+      height: 12px;
+      margin: 1px 3px;
+      float: left;
+    }
+    div{
+      float: left;
+      cursor: pointer;
+    }
+    .previous,.next{
+      height: 10px;
+      width: 15px;
+      margin: 1px 0;
+    }
+  }
+  .play,.pause{
+    width: 8px;
+    height: 12px;
+    margin: 0 7px;
+  }
+  .previous{
+    background: transparent url(../images/player-previous.png) no-repeat center center scroll;
+  }
+  .previous:hover{
+    background: transparent url(../images/player-previous-hover.png) no-repeat center center scroll;
+  }
+  .next{
+    background: transparent url(../images/player-next.png) no-repeat center center scroll;
+  }
+  .next:hover{
+    background: transparent url(../images/player-next-hover.png) no-repeat center center scroll;
+  }
+  .play {
+    background: transparent url(../images/player-play.png) no-repeat center center scroll;
+  }
+  .play{
+    background: transparent url(../images/player-play-hover.png) no-repeat center center scroll;
+  }
+  .pause {
+    background: transparent url(../images/player-pause.png) no-repeat center center scroll;
+  }
+  .pause:hover{
+    background: transparent url(../images/player-pause-hover.png) no-repeat center center scroll;
+  }
+  .progress-wrapper {
+    height: 9px;
+    width: 110px;
+    float: left;
+    background: #3c3c3c;
+    margin: 2px;
+    border-radius: 5px;
+  }
+  .progress{
+    height: 9px;
+    width: 135px;
+    cursor: pointer;
+  }
+  .elapsed{
+    height: 6px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    margin: 1px;
+    width: 60%;
+    background: @bold-color-master;
+  }
+  .unused-controls{
+    display: none !important;
+  }
+}
+
+/** Description **/
+.ttw-music-player{
+  .description{
+    clear: both;
+    font-size: 12px;
+    color: #999;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .6);
+  }
+  .description.showing{
+    margin:30px 0;
+  }
+}
+@playing-color:  @panel-light-color;
+/** Track List **/
+.ttw-music-player {
+  .tracklist {
+    background: transparent url(../images/tracklist-bg.png) repeat 0 0 scroll;
+    color: @panel-font-color;
+    font-size: 12px;
+    ol{
+      margin: 0;
+      padding: 0;
+      overflow:hidden;
+    }
+    li{
+      padding: 6px 0;
+      list-style-position: inside;
+      position: relative;
+    }
+    li:hover{
+      color: @playing-color;
+    }
+    li:last-child{
+      background: none;
+    }
+    li:nth-child(1n + 10) .title{
+      padding-left:7px;
+    }
+    li.playing {
+      color:@playing-color !important;
+    }
+    .title{
+      width: 138px;
+      display: inline-block;
+      padding-left:14px;
+      cursor: pointer;
+    }
+    .rating,.buy,.more{
+      display: none;
+    }
+  }
+  .show-more-button li:last-child{
+    background: transparent url(../images/tracklist-item-bg.png) repeat-x bottom left scroll;
+  }
+
+}
+
+/** Transitions **/
+.ttw-music-player {
+  .more, .album-cover .highlight, .tracklist li, .buy {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+  /* http://perishablepress.com/press/2009/12/06/new-clearfix-hack */
+  .player:after{
+    clear: both;
+    content: ' ';
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+}

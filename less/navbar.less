@@ -1,0 +1,120 @@
+@import "vars.less";
+
+@menu-bg-image: url("../images/top_nav.png") no-repeat;
+@menu-bg-color: @main-bg-color;
+@menu-bg-hover: @focus-color/*url("../images/top_nav_on.png")*/  ;
+@menu-animation-duration: 1s;
+@menu-gradient-color : #92141A;
+.fadeIn {
+  -webkit-animation-name: fadeIn; /*动画名称*/
+  -webkit-animation-duration: 3s; /*动画持续时间*/
+  -webkit-animation-iteration-count: 1; /*动画次数*/
+  -webkit-animation-delay: 0s; /*延迟时间*/
+}
+
+@-webkit-keyframes opacity-show-bg {
+  to{
+    background:  @menu-bg-color no-repeat;
+  }
+}
+.top-menu {
+  width: 100%;
+  background: @menu-bg-color;
+  //background: -moz-linear-gradient(top, @menu-gradient-color 0, @menu-bg-color 100%);
+  //background: -webkit-gradient(linear, left top, left bottom, color-stop(0, @menu-gradient-color), color-stop(100%, @menu-bg-color));
+  //background: -webkit-linear-gradient(top, @menu-gradient-color 0, @menu-bg-color 100%);
+  //background: -o-linear-gradient(top, @menu-gradient-color 0, @menu-bg-color 100%);
+  //background: -ms-linear-gradient(top, @menu-gradient-color 0,@menu-bg-color 100%);
+  //background: linear-gradient(to bottom, @menu-gradient-color 0, @menu-bg-color 100%);
+  //filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@{menu-gradient-color}', endColorstr='@{menu-bg-color}', GradientType=0);
+  position: fixed;
+  text-shadow: 2px 2px 2px #999;
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  > ul{
+    height: @nav-height;
+    > li{
+      display: inline-block;
+      overflow: hidden;
+      margin: 0 10px;
+      > a{
+        display: block;
+        line-height: @nav-height;
+      }
+    }
+  }
+  > ul.menu-left {
+    width: 70%;
+    padding-left: 54px;
+    z-index: 1000;
+    white-space: nowrap;
+    float: left;
+    > li {
+
+      transition:@menu-animation-duration all ease;
+      -webkit-transition:@menu-animation-duration all ease;
+      -moz-transition:@menu-animation-duration all ease;
+      -ms-transition:@menu-animation-duration all ease;
+      -o-transition:@menu-animation-duration all ease;
+      > a {
+
+        width: 84px;
+
+        color: @bold-color-master;
+        text-align: center;
+        font-size: 14px;
+      }
+      > a:after {
+        content: "*";
+        margin-left: 32px;
+        padding-top: 3px;
+        position: absolute;
+        color: #fff;
+        font-weight: 700;
+      }
+    }
+    > li:last-child {
+      > a:after {
+        content: "";
+      }
+    }
+    > li:nth-child(odd) {
+      a {
+        color: @bold-color-slave;
+      }
+    }
+    > li:hover, > li.active {
+      background:  @menu-bg-hover no-repeat;
+      a{
+        color: #fff;
+      }
+    }
+  }
+  > ul.menu-right{
+    width: 30%;
+    float: right;
+    padding-right: 193px;
+    > li {
+      float: right;
+      > a >{
+        color: #fff;
+        img{
+          margin:9px 0;
+        }
+        img.qq-login{
+          margin: 13px 0;
+        }
+        img.avatar{
+          width:40px;
+          height: 40px;
+          border-radius:50%;
+          overflow:hidden;
+        }
+        span.username{
+          color: #fff;
+          padding: 11px;
+        }
+      }
+
+    }
+  }
+}

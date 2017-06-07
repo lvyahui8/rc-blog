@@ -1,0 +1,161 @@
+@import "vars.less";
+
+@panel-bg-color: @focus-color;
+@panel-bg-image: url("../images/top_head.png");
+.page-panel {
+  height: 100%;
+  background: @main-bg-color;
+  padding: 0 8px;
+}
+
+.right-logo {
+  overflow: hidden;
+  a {
+    display: block;
+    background: url("../images/top_logo.png") no-repeat;
+    right: 0;
+    width: 193px;
+    height: 381px;
+    font-size: 0;
+  }
+}
+
+.component {
+  margin: 12px 0;
+}
+
+.contact-link {
+  overflow: hidden;
+  margin: 4px 0;
+  width: 170px;
+  padding: 3px;
+  a {
+    float: left;
+    margin: 0 14px;
+    img {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+    }
+  }
+  a:first-child {
+    margin-left: 0;
+  }
+  a:last-child {
+    margin-right: 0;
+  }
+}
+
+.list-panel {
+  width: 175px;
+  height: 173px;
+  background-color: rgba(200, 200, 200, .5);
+  margin: 0 auto;
+
+  .list-title {
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+    font-size: 14px;
+    color: @panel-font-color !important;
+  }
+  .list-body {
+    width: 165px;
+    height: 135px;
+    overflow: hidden;
+    position: relative;
+    padding: 5px;
+    margin: 0 auto;
+    .list {
+      padding: 0 0 10px;
+      font-size: 11px;
+      text-align: left;
+      .list-item {
+        margin-left: 5px;
+        padding: 4px 0;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        .list-item-title {
+          font-weight: bold;
+          margin-bottom: 4px;
+          overflow: hidden;
+          line-height: 22px;
+          color: @panel-font-color;
+        }
+      }
+    }
+  }
+}
+
+.scrollgeneric {
+  line-height: 1px;
+  font-size: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.vscrollerbase {
+  width: 5px;
+  background-color: #ccc;
+}
+
+.vscrollerbar {
+  width: 5px;
+  background-color: #999;
+}
+
+.hscrollerbase {
+  height: 10px;
+  background-color: #ccc;
+}
+
+.hscrollerbar {
+  height: 10px;
+  background-color: black;
+}
+
+.scrollerjogbox {
+  width: 10px;
+  height: 10px;
+  top: auto;
+  left: auto;
+  bottom: 0;
+  right: 0;
+  background-color: gray;
+}
+
+.right-footer {
+  padding: 1px;
+  color: @panel-font-color;
+}
+
+#footer-nav {
+  ul {
+    li {
+      display: inline-block;
+      a {
+        line-height: 18px;
+        text-align: center;
+        display: inline-block;
+        font-size: 12px;
+        padding: 2px 0;
+        color: @panel-font-color;
+      }
+    }
+    li:after {
+      content: "*";
+      margin-left: 4px;
+      font-size: 9px;
+      font-weight: bold;
+    }
+    li:last-child:after {
+      content: "";
+    }
+  }
+}
+
+#copy {
+  padding: 5px 0;
+}
