@@ -1,25 +1,18 @@
 <?php
-
 use DiDom\Document;
 
 /**
- * 一次批量拉取
  * Created by PhpStorm.
  * User: lvyahui
- * Date: 2016/7/17
- * Time: 20:39
+ * Date: 2017/6/17
+ * Time: 10:31
  */
-
-function pushToMovesun($postData)
+class BlogSpider  extends \Illuminate\Console\Command
 {
-    $url = "http://movesun.com/admin/blog/edit";
-}
-
-class PullCommand extends \Illuminate\Console\Command{
-
-    protected $name = 'blog:pull';
+    protected $name = 'blog_spider';
 
     protected $description = 'Command description.';
+
 
     private $blogId = 200167;
 
@@ -39,39 +32,40 @@ class PullCommand extends \Illuminate\Console\Command{
     private $savedCategorys;
 
     private $savedTags ;
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
+
+    private $lastCnblogsId ;
     public function fire()
     {
         $this->savedCategorys = Category::all()->keyBy('title')->all();
         $this->savedTags = Tag::all()->keyBy('name')->all();
-
+        $this->lastCnblogsId =  intval(Post::max('cnblogs_id'));
+        // 从第一页开始抓取
+        // 如果博客id比存储的最大的cnblogs_id还要大，说明是新文章，需要爬取。一直爬到最后一页为止
         $listPage = $this->cnblogUrl . '/' . $this->blogApp . '/default.html';
-        for($i = 5;$i > 0;$i--){
-            echo "list:$listPage?page=$i\n";
-            try{
-                $doucument = new Document();
-                $doucument->load(file_get_contents($listPage.'?page='.$i));
-                $articleLinks = $doucument->find('.postTitle2');
-                $articleLinks = array_reverse($articleLinks);
-                echo 'post count:'.count($articleLinks)."\n";
-                foreach ($articleLinks as $articleLink) {
-                    if(strrpos($articleLink->text(),'[置顶]') !== false){
-                        continue;
-                    }
-                    // 保存博客
-                    $postUrl = $articleLink->attr('href');
-                    echo "post:$postUrl\n";
-                    $n = 3;
-                    while($n-- && !$this->_saveBlog($postUrl));
-                }
-            }catch(Exception $e){
-                echo "download $listPage?page=$i exception\n";
+        $stop = false;
+        while(! $stop){
+            $i = 1;
+            $doc = new Document();
+            $doc->load(file_get_contents($listPage .' ?page='.$i));
+            $articleLinks = $doc->find('.postTitle2');
+            if(count($articleLinks) == 0){
+                break;
             }
+            foreach($articleLinks as $articleLink){
+                if(strrpos($articleLink->text(),'[置顶]') !== false){
+                    continue;
+                }
 
+                $postUrl = $articleLink->attr('href');
+                $n = 3;
+                $ret = 0;
+                while($n-- && !($ret = $this->_saveBlog($postUrl)));
+                if($ret === -1){
+                    // 不用继续爬取
+                    $stop = true;
+                    break;
+                }
+            }
         }
     }
 
@@ -79,8 +73,13 @@ class PullCommand extends \Illuminate\Console\Command{
         $start = strrpos($postUrl, '/') + 1;
         $postId = intval(substr($postUrl, $start, strrpos($postUrl, '.html') - $start));
 
+        if($postId <= $this->lastCnblogsId){
+            // 不用继续抓取
+            return -1;
+        }
+
         if(Post::where('cnblogs_id',$postId)->first()){
-            return;
+            return 2;
         }
         $postData = array();
 
@@ -157,39 +156,11 @@ class PullCommand extends \Illuminate\Console\Command{
                 $post->tags()->saveMany($modelTags);
             }
 
-            return true;
+            return 1;
         }catch(Exception $e){
             echo "download $postUrl exception\n";
-            return false;
+            return 0;
         }
 
     }
-    /**
-     * Get the console command arguments.
-     *
-     * @return array
-     */
-    protected function getArguments()
-    {
-        return array(
-//            array('example', InputArgument::REQUIRED, 'An example argument.'),
-        );
-    }
-
-    /**
-     * Get the console command options.
-     *
-     * @return array
-     */
-    protected function getOptions()
-    {
-        return array(
-//            array('example', null, InputOption::VALUE_OPTIONAL, 'An example option.', null),
-        );
-    }
 }
-
-
-
-
-

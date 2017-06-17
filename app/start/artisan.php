@@ -14,3 +14,5 @@
 use Illuminate\Support\Facades\Artisan;
 
 Artisan::add(new PullCommand());
+Artisan::add(new TestCmd());
+Artisan::add(new BlogSpider());
