@@ -72,11 +72,18 @@ class DemoController extends BaseController
         header('Access-Control-Allow-Headers:*');
         header('Access-Control-Allow-Credentials:true');
         header('Access-Control-Allow-Methods:*');
+        list($s1, $s2) = explode(' ', microtime());
+        $msec= (float)sprintf('%.0f', (floatval($s1) + floatval($s2)) * 1000);
+
         return Response::json(array(
             'code'  =>  0,
             'msg'   =>  '',
             'data'  =>  array(
-
+                'time'  =>  $msec,
+                'items' =>  array(
+                    array('name'=>'lvyahui','age'=>23),
+                    array('name'=>'xxxx','age'=>20),
+                )
             )
         ));
     }
