@@ -37,6 +37,13 @@ $navMap = array(
     <meta property="qc:admins" content="161721657453566375" />
     <meta name="baidu-site-verification" content="Yv33PNZgyW" />
     <title>若尘博客</title>
+    {{--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>--}}
+    {{--<script>--}}
+        {{--(adsbygoogle = window.adsbygoogle || []).push({--}}
+            {{--google_ad_client: "ca-pub-1086068298582125",--}}
+            {{--enable_page_level_ads: true--}}
+        {{--});--}}
+    {{--</script>--}}
     {{HTML::style(asset('css/reset.css'))}}
     {{HTML::style(asset('css/styles.css?v=100'))}}
     {{HTML::script('js/jquery-1.11.0.min.js')}}
